@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import AVFoundation
+import BackgroundTasks
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +18,81 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
+		
+		//	Register a launch handler for the task with the associated identifier
+		//  that’s executed on the specified queue
+		
+		// 使用在指定队列上执行的关联标识符 为任务 注册启动处理程序
+		// 使用 "com.sakuragi-Pomodoro.sample.refresh" 这个标识符 为 任务 task 注册启动处理程序
+		// 这个标识符在指定的队列上执行
+		
+//		The system runs the block of code for the launch handler when it launches the app in the background. The block takes a single parameter, a BGTask object used for assigning an expiration handler and for setting a completion status. The block has no return value
+		
+		
+		BGTaskScheduler.shared.register(forTaskWithIdentifier: "com.sakuragi-Pomodoro.sample.refresh", using: nil) { task in
+			self.handleAppRefresh(task: task)
+		}
 		return true
+	}
+	func handleAppRefresh(task:BGTask) -> Void {
+		//Schedule a new refresh task
+		scheduleAppRefresh()
+		
+		//Creates an operation that performs the main part of the background task
+		// 创建一个操作，这个操作执行后台任务的主要部分
+		let operation = RefreshAppContentsOperation()
+		
+		//Provide an expiration handler for the background task
+		//that cancels the operation
+		task.expirationHandler = {
+			operation.cancel()
+		}
+		 
+		//Inform the system that the background task is complete
+		//When the operation completes
+		operation.completionBlock = {
+			task.setTaskCompleted(success: !operation.isCancelled)
+		}
+		
+		//start the operation
+		let operationQueue = OperationQueue()
+		operationQueue.maxConcurrentOperationCount = 1
+		operationQueue.addOperation(operation)
+	}
+	
+	func RefreshAppContentsOperation() -> Operation {
+		let operation = Operation()
+		return operation
+	}
+	
+	func scheduleAppRefresh() {
+		let request = BGAppRefreshTaskRequest(identifier: "com.sakuragi-Pomodoro.sample.refresh")
+		request.earliestBeginDate = Date(timeIntervalSinceNow: 1)
+		
+//		Submitting a task request for an unexecuted task that’s already in the queue replaces the previous task request.
+//		There can be a total of 1 refresh task and 10 processing tasks scheduled at any time. Trying to schedule more tasks returns BGTaskScheduler.Error.Code.tooManyPendingTaskRequests.
+		
+		do {
+			try BGTaskScheduler.shared.submit(request)
+		} catch {
+			print("Could not schedule app refresh: \(error)")
+		}
+	}
+	
+	func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+		do {
+			try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, mode: AVAudioSession.Mode.default, options: [.mixWithOthers, .allowAirPlay])
+			print("Playback OK")
+			try AVAudioSession.sharedInstance().setActive(true)
+			print("Session is Active")
+		} catch {
+			print(error)
+		}
+		return true
+	}
+	
+	func applicationDidEnterBackground(_ application: UIApplication) {
+		self.scheduleAppRefresh()
 	}
 
 	// MARK: UISceneSession Lifecycle

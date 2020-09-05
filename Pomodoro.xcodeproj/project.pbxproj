@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7619F20624B1A6940034031F /* music.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7619F20524B1A6940034031F /* music.wav */; };
+		76285645245ABC4400A27687 /* ClockPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76285644245ABC4300A27687 /* ClockPoint.swift */; };
+		76285647245ABC9600A27687 /* RotatedClockPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76285646245ABC9600A27687 /* RotatedClockPoint.swift */; };
+		76285649245EA80D00A27687 /* Sector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76285648245EA80D00A27687 /* Sector.swift */; };
+		769CA60524667A230092182B /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769CA60424667A230092182B /* StatisticsView.swift */; };
+		769CA60724667A450092182B /* AnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769CA60624667A450092182B /* AnalysisView.swift */; };
+		769CA60924667A5E0092182B /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769CA60824667A5E0092182B /* SettingView.swift */; };
 		76C8501124591DD500148471 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C8501024591DD500148471 /* AppDelegate.swift */; };
 		76C8501324591DD500148471 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C8501224591DD500148471 /* SceneDelegate.swift */; };
 		76C8501624591DD500148471 /* Pomodoro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 76C8501424591DD500148471 /* Pomodoro.xcdatamodeld */; };
@@ -16,6 +23,8 @@
 		76C8502024591DDC00148471 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76C8501E24591DDC00148471 /* LaunchScreen.storyboard */; };
 		76C8502B24591DDC00148471 /* PomodoroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C8502A24591DDC00148471 /* PomodoroTests.swift */; };
 		76C8503624591DDC00148471 /* PomodoroUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C8503524591DDC00148471 /* PomodoroUITests.swift */; };
+		76C850442459299500148471 /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C850432459299500148471 /* ClockView.swift */; };
+		76EE5F6D246545D5004DF1AF /* ListClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EE5F6C246545D5004DF1AF /* ListClockView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +45,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7619F20524B1A6940034031F /* music.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = music.wav; sourceTree = "<group>"; };
+		76285644245ABC4300A27687 /* ClockPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockPoint.swift; sourceTree = "<group>"; };
+		76285646245ABC9600A27687 /* RotatedClockPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatedClockPoint.swift; sourceTree = "<group>"; };
+		76285648245EA80D00A27687 /* Sector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sector.swift; sourceTree = "<group>"; };
+		769CA60424667A230092182B /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
+		769CA60624667A450092182B /* AnalysisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisView.swift; sourceTree = "<group>"; };
+		769CA60824667A5E0092182B /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		76C8500D24591DD500148471 /* Pomodoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pomodoro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76C8501024591DD500148471 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76C8501224591DD500148471 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +67,8 @@
 		76C8503124591DDC00148471 /* PomodoroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PomodoroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		76C8503524591DDC00148471 /* PomodoroUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroUITests.swift; sourceTree = "<group>"; };
 		76C8503724591DDC00148471 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		76C850432459299500148471 /* ClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
+		76EE5F6C246545D5004DF1AF /* ListClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListClockView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,9 +119,18 @@
 		76C8500F24591DD500148471 /* Pomodoro */ = {
 			isa = PBXGroup;
 			children = (
+				7619F20524B1A6940034031F /* music.wav */,
 				76C8501024591DD500148471 /* AppDelegate.swift */,
 				76C8501224591DD500148471 /* SceneDelegate.swift */,
+				76EE5F6C246545D5004DF1AF /* ListClockView.swift */,
 				76C8501724591DD500148471 /* ContentView.swift */,
+				76C850432459299500148471 /* ClockView.swift */,
+				769CA60424667A230092182B /* StatisticsView.swift */,
+				769CA60624667A450092182B /* AnalysisView.swift */,
+				769CA60824667A5E0092182B /* SettingView.swift */,
+				76285648245EA80D00A27687 /* Sector.swift */,
+				76285646245ABC9600A27687 /* RotatedClockPoint.swift */,
+				76285644245ABC4300A27687 /* ClockPoint.swift */,
 				76C8501924591DDC00148471 /* Assets.xcassets */,
 				76C8501E24591DDC00148471 /* LaunchScreen.storyboard */,
 				76C8502124591DDC00148471 /* Info.plist */,
@@ -243,6 +270,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7619F20624B1A6940034031F /* music.wav in Resources */,
 				76C8502024591DDC00148471 /* LaunchScreen.storyboard in Resources */,
 				76C8501D24591DDC00148471 /* Preview Assets.xcassets in Resources */,
 				76C8501A24591DDC00148471 /* Assets.xcassets in Resources */,
@@ -271,9 +299,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				76C8501624591DD500148471 /* Pomodoro.xcdatamodeld in Sources */,
+				769CA60524667A230092182B /* StatisticsView.swift in Sources */,
 				76C8501124591DD500148471 /* AppDelegate.swift in Sources */,
+				76EE5F6D246545D5004DF1AF /* ListClockView.swift in Sources */,
 				76C8501824591DD500148471 /* ContentView.swift in Sources */,
+				76285645245ABC4400A27687 /* ClockPoint.swift in Sources */,
 				76C8501324591DD500148471 /* SceneDelegate.swift in Sources */,
+				76285647245ABC9600A27687 /* RotatedClockPoint.swift in Sources */,
+				76C850442459299500148471 /* ClockView.swift in Sources */,
+				769CA60924667A5E0092182B /* SettingView.swift in Sources */,
+				769CA60724667A450092182B /* AnalysisView.swift in Sources */,
+				76285649245EA80D00A27687 /* Sector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
