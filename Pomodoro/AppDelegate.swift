@@ -26,14 +26,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// 使用 "com.sakuragi-Pomodoro.sample.refresh" 这个标识符 为 任务 task 注册启动处理程序
 		// 这个标识符在指定的队列上执行
 		
-//		The system runs the block of code for the launch handler when it launches the app in the background. The block takes a single parameter, a BGTask object used for assigning an expiration handler and for setting a completion status. The block has no return value
-		
-		
+        //The system runs the block of code for the launch handler when it launches the app in the background. The block takes a single parameter, a BGTask object used for assigning an expiration handler and for setting a completion status. The block has no return value
 		BGTaskScheduler.shared.register(forTaskWithIdentifier: "com.sakuragi-Pomodoro.sample.refresh", using: nil) { task in
 			self.handleAppRefresh(task: task)
 		}
 		return true
 	}
+
 	func handleAppRefresh(task:BGTask) -> Void {
 		//Schedule a new refresh task
 		scheduleAppRefresh()
@@ -69,8 +68,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let request = BGAppRefreshTaskRequest(identifier: "com.sakuragi-Pomodoro.sample.refresh")
 		request.earliestBeginDate = Date(timeIntervalSinceNow: 1)
 		
-//		Submitting a task request for an unexecuted task that’s already in the queue replaces the previous task request.
-//		There can be a total of 1 refresh task and 10 processing tasks scheduled at any time. Trying to schedule more tasks returns BGTaskScheduler.Error.Code.tooManyPendingTaskRequests.
+        //Submitting a task request for an unexecuted task that’s already in the queue replaces the previous task request.
+        //There can be a total of 1 refresh task and 10 processing tasks scheduled at any time. Trying to schedule more tasks returns BGTaskScheduler.Error.Code.tooManyPendingTaskRequests.
 		
 		do {
 			try BGTaskScheduler.shared.submit(request)

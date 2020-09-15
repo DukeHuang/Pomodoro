@@ -10,22 +10,28 @@ import SwiftUI
 import UserNotifications
 import AVFoundation
 
+extension UIScreen {
+    static let screenWidth = UIScreen.main.bounds.size.width
+    static let screenHeight = UIScreen.main.bounds.size.height
+    static let screenSize = UIScreen.main.bounds.size
+}
+
 struct TomatoView: View {
 	var countDownSeconds: CGFloat //总的倒计时长，单位 seconds
 	@State var endAngleDegree: CGFloat = 270.0
-	@State var time: CGFloat = 0
+	@State var showTimeSeconds: CGFloat = 0
 	@State var timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
 	@State var timerRunning: Bool = false
 	@State var player: AVAudioPlayer?
 
 	var body: some View {
-		VStack(alignment:.center, spacing: 20) {
+		VStack(alignment:.center, spacing: 0) {
 			ZStack() {
 				Circle()
 					.foregroundColor (.gray)
 				Sector(endAngleDegree: endAngleDegree)
 					.animation(.easeInOut)
-				Text(self.timeString(second: Int(self.time)))
+				Text(self.timeString(second: Int(self.showTimeSeconds)))
 					.foregroundColor(.black)
 					.fontWeight(.medium)
 					.font(.system(size: 50))
@@ -34,29 +40,19 @@ struct TomatoView: View {
 			}
 			.environment(\.colorScheme, .dark)
 			.onReceive(timer, perform: { _ in
-				if self.time > 0 {
-					self.time -= 0.1
-					print(String(format: "%.f",self.time))
+				if self.showTimeSeconds > 0 {
+					self.showTimeSeconds -= 0.1
+					print(String(format: "%.f",self.showTimeSeconds))
 					self.endAngleDegree  +=  (0.1 / (self.countDownSeconds)) * 360
 				} else {
 					self.timer.upstream.connect().cancel()
-					self.time  = self.countDownSeconds
+					self.showTimeSeconds  = self.countDownSeconds
 					self.endAngleDegree = 270.0
+                    self.notify()
 				}
 			})
-				.onTapGesture {
-					self.timerRunning.toggle()
-					if self.timerRunning {
-						self.timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
-					} else {
-						self.timer.upstream.connect().cancel()
-					}
-					
-			}
-			.padding(EdgeInsets.init(top: 0, leading: 20, bottom: 20, trailing: 0))
-			.frame(width: 350, height: 350, alignment: .center)
-			
-		
+                .padding(EdgeInsets.init(top: 0, leading: 0, bottom: 20, trailing: 0))
+                .frame(width:UIScreen.screenWidth, height: UIScreen.screenWidth, alignment: .center)
 			Button(action: {
 				self.timerRunning.toggle()
 				let path = Bundle.main.path(forResource:"music", ofType:"wav")
@@ -70,8 +66,6 @@ struct TomatoView: View {
 				}
 				catch{
 				}
-				
-				
 				if self.timerRunning {
 					self.timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
 					self.player!.prepareToPlay()
@@ -86,18 +80,19 @@ struct TomatoView: View {
 				if self.timerRunning {
 					Image(systemName: "pause").renderingMode(.original).font(.system(size: 50))
 				} else {
-					Image(systemName: "play").renderingMode(.original)
-					.font(.system(size: 50))
-				}				
+					Image(systemName: "play").renderingMode(.original).font(.system(size: 50))
+				}
 			}
-			
 		}
 		.environment(\.colorScheme, .dark)
+
         .onDisappear {
             Tool.showTabBar()
+            self.timer.upstream.connect().cancel()
         }
         .onAppear() {
             Tool.hiddenTabBar()
+            self.showTimeSeconds = self.countDownSeconds
         }
 	}
 	
@@ -107,7 +102,7 @@ struct TomatoView: View {
 		return String(format: "%02d:%02d", mm,ss)
 	}
 	
-	func Notify(){
+	func notify(){
 		let content = UNMutableNotificationContent()
 		content.title = "Message"
 		content.body = "Timer Is Completed Successfully In Background !!!"
