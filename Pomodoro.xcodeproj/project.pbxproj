@@ -11,6 +11,7 @@
 		76285645245ABC4400A27687 /* ClockPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76285644245ABC4300A27687 /* ClockPoint.swift */; };
 		76285647245ABC9600A27687 /* RotatedClockPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76285646245ABC9600A27687 /* RotatedClockPoint.swift */; };
 		76285649245EA80D00A27687 /* Sector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76285648245EA80D00A27687 /* Sector.swift */; };
+		7683579E25106883005A8695 /* ToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7683579D25106883005A8695 /* ToolView.swift */; };
 		769CA60524667A230092182B /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769CA60424667A230092182B /* StatisticsView.swift */; };
 		769CA60724667A450092182B /* AnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769CA60624667A450092182B /* AnalysisView.swift */; };
 		769CA60924667A5E0092182B /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769CA60824667A5E0092182B /* SettingView.swift */; };
@@ -49,6 +50,7 @@
 		76285644245ABC4300A27687 /* ClockPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockPoint.swift; sourceTree = "<group>"; };
 		76285646245ABC9600A27687 /* RotatedClockPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatedClockPoint.swift; sourceTree = "<group>"; };
 		76285648245EA80D00A27687 /* Sector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sector.swift; sourceTree = "<group>"; };
+		7683579D25106883005A8695 /* ToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolView.swift; sourceTree = "<group>"; };
 		769CA60424667A230092182B /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		769CA60624667A450092182B /* AnalysisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisView.swift; sourceTree = "<group>"; };
 		769CA60824667A5E0092182B /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				769CA60424667A230092182B /* StatisticsView.swift */,
 				769CA60624667A450092182B /* AnalysisView.swift */,
 				769CA60824667A5E0092182B /* SettingView.swift */,
+				7683579D25106883005A8695 /* ToolView.swift */,
 				76285648245EA80D00A27687 /* Sector.swift */,
 				76285646245ABC9600A27687 /* RotatedClockPoint.swift */,
 				76285644245ABC4300A27687 /* ClockPoint.swift */,
@@ -298,6 +301,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7683579E25106883005A8695 /* ToolView.swift in Sources */,
 				76C8501624591DD500148471 /* Pomodoro.xcdatamodeld in Sources */,
 				769CA60524667A230092182B /* StatisticsView.swift in Sources */,
 				76C8501124591DD500148471 /* AppDelegate.swift in Sources */,

@@ -11,7 +11,7 @@ import UserNotifications
 import AVFoundation
 
 struct ClockView: View {
-	var ss: CGFloat //总的倒计时长，单位 seconds
+	var countDownSeconds: CGFloat //总的倒计时长，单位 seconds
 	@State var endAngleDegree: CGFloat = 270.0
 	@State var time: CGFloat = 0
 	@State var timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
@@ -33,21 +33,14 @@ struct ClockView: View {
 					.transition(.opacity)
 			}
 			.environment(\.colorScheme, .dark)
-
-//			.onAppear(perform: {
-//				UNUserNotificationCenter.current().requestAuthorization(options: [.badge,.sound,.alert]) { (_, _) in
-//				}
-//			})
-				
 			.onReceive(timer, perform: { _ in
 				if self.time > 0 {
 					self.time -= 0.1
 					print(String(format: "%.f",self.time))
-					self.endAngleDegree  +=  (0.1 / (self.ss)) * 360
-//					self.Notify()
+					self.endAngleDegree  +=  (0.1 / (self.countDownSeconds)) * 360
 				} else {
 					self.timer.upstream.connect().cancel()
-					self.time  = self.ss
+					self.time  = self.countDownSeconds
 					self.endAngleDegree = 270.0
 				}
 			})
@@ -83,7 +76,6 @@ struct ClockView: View {
 					self.timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
 					self.player!.prepareToPlay()
 					self.player?.numberOfLoops = -1
-					//				self.player?.volume = 0.0
 					self.player!.play()
 				} else {
 					self.timer.upstream.connect().cancel()
@@ -101,6 +93,9 @@ struct ClockView: View {
 			
 		}
 		.environment(\.colorScheme, .dark)
+            .onDisappear {
+                Tool.showTabBar()
+        }
 	}
 	
 	func timeString(second:Int) -> String {
@@ -110,7 +105,6 @@ struct ClockView: View {
 	}
 	
 	func Notify(){
-
 		let content = UNMutableNotificationContent()
 		content.title = "Message"
 		content.body = "Timer Is Completed Successfully In Background !!!"
@@ -125,6 +119,6 @@ struct ClockView: View {
 
 struct CircleImage_Previews: PreviewProvider {
 	static var previews: some View {
-		ClockView(ss: 25 * 60)
+		ClockView(countDownSeconds: 25 * 60)
 	}
 }

@@ -18,29 +18,29 @@ struct ContentView: View {
 			}.tabItem({
 				Image.init(systemName: "list.dash")
 				Text("任务")
-			})
+                })
 			NavigationView {
 				StatisticsView()
 					.navigationBarTitle(Text("统计"))
 			}.tabItem({
 				Image.init(systemName: "timer")
 				Text("统计")
-			})
+                })
 			NavigationView {
 				AnalysisView()
 					.navigationBarTitle(Text("统计"))
 			}.tabItem({
 				Image.init(systemName: "waveform")
 				Text("分析")
-			})
+                })
 			NavigationView {
 				SettingView()
 					.navigationBarTitle(Text("统计"))
 			}.tabItem({
 				Image.init(systemName: "person")
 				Text("我的")
-			})
-		}
+                })
+        }
 	}
 }
 

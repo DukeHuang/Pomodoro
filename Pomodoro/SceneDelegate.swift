@@ -65,25 +65,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		// Called as the scene transitions from the foreground to the background.
 		// Use this method to save data, release shared resources, and store enough scene-specific state information
 		// to restore the scene back to its current state.
-		
-//		timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
-//		RunLoop.current.add(timer!, forMode: .common)
-		
-//		do not call this method at the end of your applicationDidEnterBackground(_:) method and expect your app to continue running
-		
-//		let application = UIApplication.shared
-//		bgTask = application.beginBackgroundTask(expirationHandler: {
-//			application.endBackgroundTask(self.bgTask!)
-//			self.bgTask = .invalid
-//			print("end task")
-//		})
-//		ProcessInfo.processInfo.performExpiringActivity(withReason: "Time") { suspended in
-//			if suspended {
-//
-//			} else {
-//
-//			}
-//		}
+
 		self.scheduleAppRefresh()
 		// Save changes in the application's managed object context when the application transitions to the background.
 		(UIApplication.shared.delegate as? AppDelegate)?.saveContext()
